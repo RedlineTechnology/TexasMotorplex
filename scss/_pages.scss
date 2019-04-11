@@ -1,0 +1,320 @@
+/* ////////////////////////////////////////////////////////////////////////// */
+/*                                   PAGES                                    */
+/* ////////////////////////////////////////////////////////////////////////// */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 4em 1em;
+  @include breakpoint('desktop') {
+    padding: 4em 2em;
+    flex-direction: row;
+  }
+  &.hero {
+    padding: 7em 1em 4em;
+    h1 {
+      margin: 0;
+    }
+  }
+  h2 {
+    text-transform: uppercase;
+  }
+  h2 + p {
+    margin-top: .5em;
+    font-size: 1.1em;
+  }
+  h5 {
+    margin-bottom: .5em;
+  }
+  & > div {
+    padding: 1em;
+  }
+  .innerbox {
+    h1 {
+      margin-top: 0;
+    }
+    margin: 1em auto;
+    padding: 1em;
+    max-width: 100%;
+    text-align: left;
+    font-size: 1.2em;
+    background: rgba(255,255,255,0.75);
+    color: rgba(0,0,0,0.9);
+    @include breakpoint('desktop') {
+      margin: 2em;
+      padding: 2em;
+      max-width: 50%;
+      &.full {
+        max-width: 100%;
+      }
+    }
+    h1,h2,h3,h4,h5,h6 {
+      color: $red;
+    }
+    &.dark {
+      background: rgba(0,0,0,0.7);
+      color: white;
+      h1,h2,h3,h4,h5,h6 {
+        color: white;
+      }
+    }
+    &.center {
+      text-align: center;
+    }
+  }
+  .innerImage {
+    max-width: 100%;
+    height: 100px;
+    margin: 0 1em;
+    @include bgimage('http://www.placekitten.com/400/400');
+    @include breakpoint('desktop') {
+      width: 30%;
+      height: auto;
+      margin: 10vh auto;
+    }
+  }
+}
+
+.lower-arrow {
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;;
+  max-width: 100% !important;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  &:before {
+    content: '\f078';
+    @include fontawesome(300);
+    font-size: 2em;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    bottom: .5em;
+    margin-left: -.25em;
+    color: black;
+  }
+  &.white {
+    &:before {
+      color: white;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# TESTIMONIALS
+--------------------------------------------------------------*/
+
+#testimonials {
+  @include bgimage('ta-ext-75dark.jpg');
+  & > div {
+    max-width: 100%;
+    margin: 0 auto;
+    @include breakpoint('desktop') {
+      max-width: $contentWidth;
+    }
+  }
+  p {
+    @include bodyfont;
+    font-size: 1.1em;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: .5em;
+    span {
+      @include headlinefont;
+      text-transform: uppercase;
+      color: white;
+    }
+  }
+  h6 {
+    color: rgba(255,255,255,0.75);
+    text-align: right;
+  }
+  @include breakpoint('desktop') {
+    height: 80vh;
+    @include bgimage($image: 'ta-ext-lg.jpg', $pos: center 30%);
+    p {
+      color: black;
+      span { color: $red; }
+    }
+    h6 { color: $red; }
+  }
+}
+
+/*--------------------------------------------------------------
+# FEATURE LIST
+--------------------------------------------------------------*/
+
+.feature-list {
+  @include bodyfont;
+  font-size: 1.2em;
+  display: flex;
+  margin: 0 auto 25px;
+  padding-top: 65px;
+  list-style: none;
+  overflow-y: scroll;
+  li {
+    position: relative;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 15px;
+    padding: 10px;
+    i {
+      color: $red;
+      position: absolute;
+      top: -55px;
+      left: 50%;
+      width: 50px;
+      line-height: 50px;
+      height: 50px;
+      border-radius: 25px;
+      margin-left: -25px;
+      font-size: 40px;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# CONTACT TAG
+--------------------------------------------------------------*/
+
+.contact-tag {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 1px solid $red;
+  padding: 0 1em !important;
+  text-align: left;
+  margin: 0;
+  @include breakpoint('desktop') {
+    margin: 0 auto;
+  }
+  .thumb {
+    // @include bgimage($image: 'people_test.png', $pos: center top);
+    height: 10em;
+    width: 1px;
+    padding: 0;
+    margin-right: 0;
+    flex-shrink: 0;
+    z-index: 10;
+    @include breakpoint('desktop') {
+      height: 6.5em;
+    }
+  }
+  .info {
+    text-align: left;
+    z-index: 10;
+    p {
+      color: rgba(255,255,255,0.8);
+      font-size: .9em;
+      margin: 0 0 -5px;
+    }
+    h3 {
+      color: white !important;
+      line-height: 1em;
+      margin: .1em 0;
+    }
+    h6 {
+      @include bodyfont;
+      color: white !important;
+      letter-spacing: 0;
+      text-transform: none;
+      font-weight: 400;
+      margin-top: -5px;
+      a {
+        @include link_color(white,white);
+        text-decoration: none;
+      }
+    }
+  }
+  &.dark {
+    border: 1px solid white;
+  }
+  &.light {
+    border: 1px solid white;
+    background: white;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+    .info {
+      p, h3, h6 {
+        color: $red !important;
+        a {
+          @include link_color($red,$red);
+          text-decoration: none;
+        }
+      }
+    }
+    &:after {
+      display: none;
+    }
+  }
+  &.center {
+    text-align: center;
+    .info {
+      text-align: center;
+    }
+  }
+  &.big {
+    h3 {
+      letter-spacing: 0;
+      font-size: 2.75em;
+    }
+  }
+  &:after {
+    content: "";
+    background: $red;
+    height: 8em;
+    width: 2000%;
+    position: absolute;
+    z-index: 0;
+    left: -500%;
+    @include breakpoint('desktop') {
+      height: 5em;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# DEFAULT PAGE TEMPLATE
+--------------------------------------------------------------*/
+
+.page {
+  .hero {
+    @include bgimage('ta-ext-50dark.jpg');
+    justify-content: center;
+    text-align: center;
+    h1 {
+      color: white;
+    }
+  }
+  .page-content {
+    flex-direction: column;
+    & > div {
+      max-width: $contentWidth;
+      margin: 0 auto;
+      span {
+        @include headlinefont;
+        text-transform: uppercase;
+        color: $red;
+      }
+    }
+    .wp-block-column {
+      text-align: center;
+      margin-left: 0;
+      @include breakpoint('desktop') {
+        text-align: left;
+        &:not(:first-child) {
+          margin-left: 1em;
+        }
+      }
+    }
+    h5 {
+      color: $red;
+      line-height: 1em;
+    }
+  }
+}

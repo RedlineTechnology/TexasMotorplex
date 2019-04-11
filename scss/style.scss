@@ -1,0 +1,612 @@
+/*!
+Theme Name: Texas Motorplex Theme
+Author: Jason Subers
+Author URI: https://github.com/jasonsubers
+Description: Custom Theme for Texas Motorplex
+Version: 0.1
+Text Domain: _motorplex
+
+                 db             .dP"Yb                         dP"Yb.                   .dP'
+              db    db        dP'   d'                         `b   'Yb               dP'
+
+.dP' .dP'  dP'  'Yb   .d888b.   'Yb   `Yb d88b d88b    .d888b.    'Yb  `Yb d88b d88b   'Yb  `Yb    dP'.d888b.
+88   88    88    88   8'   `Yb   88    88P   8Y   8b   8'   `Yb    88   88P   8Y   8b   88    Yb  dP  8'   `Yb
+Y8   Y8   .88    88   Yb.   88   88    88    8P   88   Yb.   88    88   88    8P   88   88     YbdP   Yb.   88
+`Y88P`Y88P'88   .8P       .dP   .8P   .8P  bdP  bdP        .dP    .8P   88  .dP' .dP'  .8P     .8P        .dP
+           88           .dP'                             .dP'           888888888888b.       dP'  b     .dP'
+           88         .dP'                             .dP'             88                   Y.  ,P   .dP'
+           Y8.                                                         .8P                    `""'
+
+*/
+
+/* ////////////////////////////////////////////////////////// */
+/*                     TABLE OF CONTENTS                      */
+/* ////////////////////////////////////////////////////////// */
+
+/* -------------------------------------------------------------
+0.0 - Style Sheet Partials
+
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+------------------------------------------------------------- */
+
+/* ////////////////////////////////////////////////////////// */
+/* 0.0                STYLE SHEET PARTIALS                    */
+/* ////////////////////////////////////////////////////////// */
+
+/* FOUNDATION */
+@import 'reset';
+@import 'variables';
+
+/* FRAMEWORK */
+@import 'grid';
+@import url("https://use.typekit.net/cye1bnf.css");
+@import 'typography';
+
+/* SUPPORT */
+@import 'vendor';
+
+/* THE REST */
+@import 'global';
+@import 'nav';
+@import 'pages';
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+
+.form-wrapper {
+	width: 100%;
+  max-width: $contentWidth;
+  margin: 0 auto;
+}
+
+a[class*='button'] {
+  @include bodyfont;
+  font-size: 1.2em;
+  @include link_color(black,black);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+a.button {
+	@include bodyfont;
+	background: $red;
+	@include link_color(white,white);
+	text-decoration: none;
+	cursor: pointer;
+	min-width: 100%;
+	font-size: 1.4em;
+	border-radius: 0;
+	border: none;
+	display: inline-block;
+	position: relative;
+	margin: 5px auto;
+	padding: .5em 1.25em;
+  transition: all 0.5s ease;
+
+	&, &:link, &:active {
+  	transition: all 0.5s ease;
+	}
+	&:hover, &:active, &:focus {
+		min-width: 100%;
+	  transition: all 0.5s ease;
+	}
+	@include breakpoint('desktop') {
+		min-width: 50%;
+	}
+}
+.site-content .wp-block-button__link {
+	padding: 1em 2em;
+	text-decoration: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	@include headlinefont;
+	text-transform: uppercase;
+	letter-spacing: .03em;
+	color: rgba(0,0,0,0.85);
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 10px;
+
+	@include placeholder() {
+		@include bodyfont;
+		font-weight: 300;
+		text-transform: none;
+		color: rgba(0,0,0,0.6);
+	}
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+	@include bodyfont;
+	padding: 10px;
+	color: rgba(0,0,0,0.6);
+}
+
+// FANCY CHECKBOX
+input[type="checkbox"] {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+  & + label {
+    position: relative;
+		top: .2em;
+    cursor: pointer;
+    padding: 0;
+  }
+  // Box.
+  & + label:before {
+    content: '';
+		position: relative;
+		top: -.35em;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+		padding: 5px;
+		box-sizing: content-box;
+		border-radius: 3px;
+    background: rgba(0,0,0,0.2);
+  }
+  // Box hover, Box checked
+  &:hover + label:before,
+	&:checked + label:before {
+    background: $red;
+  }
+  // Box focus
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+  // Disabled state label.
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+  // Disabled box.
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+  // Checkmark
+  &:checked + label:after {
+		@include fontawesome(800);
+    content: '\f00c';
+		color: white;
+    position: absolute;
+		left: .4em;
+		top: .1em;
+		font-size: 1.1em;
+  }
+}
+
+// FANCY RADIO
+input[type="radio"] {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+  & + label {
+    position: relative;
+		top: .2em;
+    cursor: pointer;
+    padding: 0;
+  }
+  // Box.
+  & + label:before {
+    content: '';
+		position: relative;
+		top: -.5em;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+		padding: 5px;
+		box-sizing: content-box;
+		border-radius: 20px;
+    background: rgba(0,0,0,0.2);
+  }
+  // Box hover, Box checked
+  &:hover + label:before,
+	&:checked + label:before {
+    background: $red;
+  }
+  // Box focus
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+  // Disabled state label.
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+  // Disabled box.
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+  // Checkmark
+  &:checked + label:after {
+		@include fontawesome(800);
+    content: '\f111';
+		color: white;
+    position: absolute;
+		left: .7em;
+    top: .1em;
+    font-size: .8em;
+  }
+}
+
+// FANCY SELECT
+div[class$="-field-select"] {
+  padding: 10px;
+	margin: 20px auto 0;
+  border: 1px solid #ccc;
+  width: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+	&:after {
+		@include fontawesome;
+		content: '\f078';
+		position: absolute;
+		right: 20px;
+		top: 1em;
+	}
+	& select {
+		@include bodyfont;
+		color: rgba(0,0,0,0.6);
+    padding: 0 10px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	color: #111;
+}
+
+select {
+	border: 1px solid #ccc;
+}
+
+textarea {
+	width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Links
+--------------------------------------------------------------*/
+a {
+	cursor:pointer;
+	text-decoration: none;
+}
+
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
+	clear: both;
+}
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widget {
+	margin: 0 0 1.5em;
+	/* Make sure select elements fit in widgets. */
+}
+
+.widget select {
+	max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+article.post {
+	header, footer {
+		display: none;
+	}
+	.entry-content {
+		p {
+			max-width: 40em;
+			margin: 0 auto;
+		}
+	}
+}
+
+aside#secondary {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+	/* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+	display: inline-block;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
