@@ -108,6 +108,19 @@
 }
 
 /*--------------------------------------------------------------
+# ELEMENTS
+--------------------------------------------------------------*/
+
+article {
+  margin-bottom: 10px;
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    @include link_color(black,$red);
+  }
+}
+
+/*--------------------------------------------------------------
 # TESTIMONIALS
 --------------------------------------------------------------*/
 
@@ -137,7 +150,7 @@
   }
   @include breakpoint('desktop') {
     height: 80vh;
-    @include bgimage($image: 'ta-ext-lg.jpg', $pos: center 30%);
+    @include bgimage($image: 'http://placekitten.com/1200/400', $pos: center 30%);
     p {
       color: black;
       span { color: $red; }
@@ -284,7 +297,7 @@
 
 .page {
   .hero {
-    @include bgimage('ta-ext-50dark.jpg');
+    @include bgimage('http://placekitten.com/1200/400');
     justify-content: center;
     text-align: center;
     h1 {
@@ -316,5 +329,251 @@
       color: $red;
       line-height: 1em;
     }
+  }
+}
+
+.home {
+  .hero {
+    background: rgba($blue, 0.5);
+  }
+}
+
+/* ////////////////////////////////////////////////////////////////////////// */
+/*                                    HOME                                    */
+/* ////////////////////////////////////////////////////////////////////////// */
+
+.home {
+  .hero .content-container {
+    background-color: rgba($blue, 0.5);
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    z-index: 2;
+    .box {
+      color: white;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: -10vh;
+    }
+    h1 {
+      @include headlinefont;
+      font-style: italic;
+      font-size: 5em;
+      letter-spacing: -.05em;
+      font-weight: 900;
+      margin: 0;
+    }
+    .sub {
+      @include superheavyfont;
+      font-size: 1.75em;
+      text-decoration: none;
+      @include link_color( white,white );
+      display: block;
+      width: 100%;
+      position: relative;
+      &:after {
+        display: block;
+        position: absolute;
+        content: "";
+        visibility: visible;
+        width: 50%;
+        height: 10px;
+        background: white;
+        border-radius: 2px;
+      }
+      &.upper {
+        margin-bottom: 20px;
+        text-align: left;
+        left: 0;
+        -webkit-transition: left 0.2s ease-out;
+        transition: left 0.2s ease-out;
+        &:after {
+          left: 0;
+          -webkit-transition: left 0.2s ease-out;
+          transition: left 0.2s ease-out;
+        }
+        &:hover, &:active, &:focus {
+          left: 20px;
+          &:after {
+            left: -20px;
+          }
+        }
+      }
+      &.lower {
+        margin-top: 20px;
+        text-align: right;
+        right: 0;
+        -webkit-transition: right 0.2s ease-out;
+        transition: right 0.2s ease-out;
+        &:after {
+          right: 0;
+          -webkit-transition: right 0.2s ease-out;
+          transition: right 0.2s ease-out;
+        }
+        &:hover, &:active, &:focus {
+          right: 20px;
+          &:after {
+            right: -20px;
+          }
+        }
+      }
+    }
+  }
+  .current {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    h2 {
+      display: inline;
+      padding-left: 10px;
+      padding-bottom: 3px;
+      background: rgba(255,255,255,0.9);
+    }
+    .col-6 {
+      z-index: 1;
+    }
+    .col-6:first-child {
+      text-align: right;
+      .sectiontitle {
+        right: 0;
+        left: auto;
+        -webkit-transition: right 0.2s ease-out;
+        transition: right 0.2s ease-out;
+        &:after {
+          right: 0;
+          left: auto;
+          -webkit-transition: right 0.2s ease-out;
+          transition: right 0.2s ease-out;
+        }
+        &:hover, &:active, &:focus {
+          right: 20px;
+          left: auto;
+          &:after {
+            right: -20px;
+            left: auto;
+          }
+        }
+      }
+    }
+    .news-thumbs {
+      content:"";
+      display: block;
+      overflow: hidden;
+      transform: rotate(20deg);
+      height: 130%;
+      top: -25%;
+      width: 400px;
+      left: -10%;
+      position: absolute;
+      z-index: 0;
+      opacity: 0;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+      &.show {
+        opacity: 1;
+        left: -5%;
+      }
+      div {
+        height: 100%;
+        width: 800px;
+        transform: rotate(340deg);
+        background-image: url('http://www.placekitten.com/1200/400');
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  .planyourtrip {
+    @include bgimage('mplex_bg.jpg');
+    .content-container {
+      background-color: rgba($red, 0.5);
+      width: 100%;
+      text-align: center;
+      color: white;
+      padding: 100px 0 150px;
+    }
+    section {
+      color: $red;
+      height: inherit;
+      height: 400px;
+      &.directions {
+        overflow: hidden;
+        .col-6:nth-child(2n) {
+          padding: 1.5em 1.5em 1.5em 0;
+          height: 400px;
+          overflow-y: scroll;
+        }
+      }
+      &.gatepolicies {
+        padding: 1.5em;
+        overflow-y: scroll;
+        ul {
+          list-style: disc;
+          margin: 0 0 1.5em 1em;
+          li {
+            display: list-item;
+          }
+        }
+      }
+      &.hotels {
+        overflow-y: scroll;
+        .row {
+          border-bottom: 1px solid #ccc;
+        }
+        .col-6:nth-child(2n) {
+          padding: 1.5em 1.5em 1.5em 0;
+        }
+        figure {
+          margin: 0;
+        }
+        a {
+          @include link_color($red,$red);
+        }
+      }
+      p {
+        color: black;
+      }
+    }
+  }
+  .sponsors {
+    background: $red;
+  }
+}
+
+nav.accordion-tabs {
+  width: 80%;
+  margin: 50px auto 0;
+  min-width: 400px;
+  max-width: 800px;
+  .accordion-tab-headings {
+    display: flex;
+    justify-content: space-between;
+    @include lightfont;
+    font-size: 1.4em;
+    margin-bottom: 3px;
+    a {
+      @include link_color(white,white);
+      text-transform: uppercase;
+    }
+  }
+  .accordion-tab-content {
+    background: white;
+    text-align: left;
+  }
+}
+
+.frontpage-bannerad {
+  width: 80%;
+  min-width: 400px;
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 5px solid $red;
+  img {
+    width: 100%;
   }
 }

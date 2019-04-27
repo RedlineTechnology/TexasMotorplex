@@ -102,7 +102,7 @@
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 20,
+		'menu_position'         => 30,
 		'menu_icon'             => 'dashicons-admin-users',
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => false,
@@ -113,6 +113,57 @@
 		'capability_type'       => 'page',
 	);
 	register_post_type( 'people', $args );
+
+	$labels = array(
+		'name'                  => _x( 'Sponsors', 'Post Type General Name', '_motorplex' ),
+		'singular_name'         => _x( 'Sponsor', 'Post Type Singular Name', '_motorplex' ),
+		'menu_name'             => __( 'Sponsors', '_motorplex' ),
+		'name_admin_bar'        => __( 'Sponsors', '_motorplex' ),
+		'archives'              => __( 'Item Archives', '_motorplex' ),
+		'attributes'            => __( 'Item Attributes', '_motorplex' ),
+		'parent_item_colon'     => __( 'Parent Item:', '_motorplex' ),
+		'all_items'             => __( 'All Items', '_motorplex' ),
+		'add_new_item'          => __( 'Add New Item', '_motorplex' ),
+		'add_new'               => __( 'Add Sponsor', '_motorplex' ),
+		'new_item'              => __( 'New Sponsor', '_motorplex' ),
+		'edit_item'             => __( 'Edit Sponsor', '_motorplex' ),
+		'update_item'           => __( 'Update Sponsor', '_motorplex' ),
+		'view_item'             => __( 'View Sponsor', '_motorplex' ),
+		'view_items'            => __( 'View Sponsors', '_motorplex' ),
+		'search_items'          => __( 'Search Item', '_motorplex' ),
+		'not_found'             => __( 'Not found', '_motorplex' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', '_motorplex' ),
+		'featured_image'        => __( 'Logo', '_motorplex' ),
+		'set_featured_image'    => __( 'Set Logo', '_motorplex' ),
+		'remove_featured_image' => __( 'Remove Logo', '_motorplex' ),
+		'use_featured_image'    => __( 'Use as Logo', '_motorplex' ),
+		'insert_into_item'      => __( 'Insert into item', '_motorplex' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', '_motorplex' ),
+		'items_list'            => __( 'Items list', '_motorplex' ),
+		'items_list_navigation' => __( 'Items list navigation', '_motorplex' ),
+		'filter_items_list'     => __( 'Filter items list', '_motorplex' ),
+	);
+	$args = array(
+		'label'                 => __( 'Sponsor', '_motorplex' ),
+		'description'           => __( 'Will display Sponsors in a Carousel on the Front Page', '_motorplex' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 25,
+		'menu_icon'             => 'dashicons-heart',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => false,
+		'can_export'            => true,
+		'has_archive'           => false,
+		'exclude_from_search'   => true,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'sponsors', $args );
 
  }
  add_action( 'init', 'register_custom_posts', 0 );

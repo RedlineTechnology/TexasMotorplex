@@ -8,6 +8,7 @@
 
 body {
 	background: #fff;
+	font-family: $primaryfont;
 	/* Fallback for when there is no custom background color defined. */
 }
 
@@ -82,9 +83,4 @@ table {
 
 .noscroll {
 	overflow: hidden;
-}
-
-.site-content a {
-	@include link_color($red,$red);
-	text-decoration: underline;
 }

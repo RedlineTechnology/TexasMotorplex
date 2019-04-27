@@ -35,6 +35,12 @@
 		"oAP": "/build/archive.php",
 		"oF": 0
 		},
+	"/build": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "/build/build",
+		"oF": 0
+		},
 	"/comments.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -90,6 +96,50 @@
 		"oAP": "/build/images/ajax-loader.gif",
 		"oF": 0,
 		"opt": 0
+		},
+	"/images/ennisyall.jpg": {
+		"ft": 16384,
+		"iS": 108769,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/build/images/ennisyall.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"/images/motorplex_tm.png": {
+		"ft": 32768,
+		"iS": 55126,
+		"oA": 0,
+		"oAP": "/build/images/motorplex_tm.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"/images/motorplex_white.png": {
+		"ft": 32768,
+		"iS": 12914,
+		"oA": 0,
+		"oAP": "/build/images/motorplex_white.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"/images/mplex_bg.jpg": {
+		"ft": 16384,
+		"iS": 151904,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/build/images/mplex_bg.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
 		},
 	"/images/overlay.png": {
 		"ft": 32768,
@@ -153,24 +203,35 @@
 		"oAP": "/build/index.php",
 		"oF": 0
 		},
-	"/js/aircraft-slider.js": {
+	"/js/accordion-options.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/aircraft-slider.js",
+		"oAP": "/build/js/accordion-options.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
 		},
-	"/js/aircraft-slider.min.js": {
+	"/js/accordion-tabs.min.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/aircraft-slider.min.js",
+		"oAP": "/build/js/accordion-tabs.min.min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/js/coverr.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/js/coverr.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -181,7 +242,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/customizer.js",
+		"oAP": "/build/js/customizer.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -192,7 +253,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/featherlight.js",
+		"oAP": "/build/js/featherlight.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -203,7 +264,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/featherlight.min.js",
+		"oAP": "/build/js/featherlight.min.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -214,8 +275,8 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/navigation.js",
-		"oF": 0,
+		"oAP": "/js/navigation.min.js",
+		"oF": 2,
 		"sC": 3,
 		"tS": 0
 		},
@@ -225,7 +286,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/navigation.min.js",
+		"oAP": "/build/js/navigation.min.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -236,7 +297,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/scrolltrigger.min.js",
+		"oAP": "/build/js/scrolltrigger.min.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -247,7 +308,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/skip-link-focus-fix.js",
+		"oAP": "/build/js/skip-link-focus-fix.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -258,7 +319,29 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/slick.min.js",
+		"oAP": "/build/js/slick.min.min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/js/sponsor-slider.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/js/sponsor-slider.min.js",
+		"oF": 2,
+		"sC": 3,
+		"tS": 0
+		},
+	"/js/sponsor-slider.min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/js/sponsor-slider.min.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -269,7 +352,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/testimonial-slider.js",
+		"oAP": "/build/js/testimonial-slider.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -280,7 +363,7 @@
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/testimonial-slider.min.js",
+		"oAP": "/build/js/testimonial-slider.min.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -560,6 +643,14 @@
 		"oAP": "/build/template-parts/head-tracking.php",
 		"oF": 0
 		},
+	"/template-parts/latestnews.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/latestnews.php",
+		"oF": 0
+		},
 	"/template-parts/nav-mobile.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -576,12 +667,98 @@
 		"oAP": "/build/template-parts/nav.php",
 		"oF": 0
 		},
+	"/template-parts/planyourvisit.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/planyourvisit.php",
+		"oF": 0
+		},
+	"/template-parts/sponsors.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/sponsors.php",
+		"oF": 0
+		},
 	"/template-parts/testimonial-slider.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/build/template-parts/testimonial-slider.php",
+		"oF": 0
+		},
+	"/template-parts/trackstatus.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/trackstatus.php",
+		"oF": 0
+		},
+	"/template-parts/upcomingevents.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/upcomingevents.php",
+		"oF": 0
+		},
+	"/vendor/coverr/motorplex-video-poster.jpg": {
+		"ft": 16384,
+		"iS": 380282,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/build/vendor/coverr/motorplex-video-poster.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"/vendor/coverr/Motorplex.jpg": {
+		"ft": 16384,
+		"iS": 72862,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/build/vendor/coverr/Motorplex.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"/vendor/coverr/Motorplex.m4v": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/vendor/coverr/Motorplex.m4v",
+		"oF": 0
+		},
+	"/vendor/coverr/Motorplex.mp4": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/vendor/coverr/Motorplex.mp4",
+		"oF": 0
+		},
+	"/vendor/coverr/Motorplex.ogv": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/vendor/coverr/Motorplex.ogv",
+		"oF": 0
+		},
+	"/vendor/coverr/Motorplex.webm": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/vendor/coverr/Motorplex.webm",
 		"oF": 0
 		},
 	"/vendor/css/all.css": {
@@ -2649,7 +2826,7 @@
 		},
 	"languageDefaultsJS": {
 		"autoOutputAction": 0,
-		"autoOutputPathFilenamePattern": "*.js",
+		"autoOutputPathFilenamePattern": "*.min.js",
 		"autoOutputPathRelativePath": "/min",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",

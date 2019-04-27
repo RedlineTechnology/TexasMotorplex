@@ -78,6 +78,54 @@ function ta_customize_register( $wp_customize ) {
 		'label'			=> __( 'Secondary Phone Number', '_motorplex' ),
 	));
 
+	/* TRACK STATUS */
+	$wp_customize->add_section( 'track_status', array(
+		'title'       => __( 'Track Status', '_motorplex' ),
+		'priority'    => 15,
+		'capability'  => 'edit_theme_options'
+	));
+	/* Track Status */
+	$wp_customize->add_setting( 'track_status', array(
+		'default'			=> 'green',
+		'sanitize_callback'	=> 'theme_slug_sanitize_select'
+	));
+	$wp_customize->add_control( 'track_status', array(
+		'settings'		=> 'track_status',
+		'section'		=> 'track_status',
+		'type'			=> 'select',
+		'label'			=> __( 'Track Status', '_motorplex' ),
+		'description' => __( 'Set Track Status', '_motorplex' ),
+		'choices'		=> array(
+			'green'		=> __( 'Green', '_motorplex' ),
+			'yellow'	=> __( 'Yellow', '_motorplex' ),
+			'red'			=> __( 'Red', '_motorplex' )
+		)
+	));
+	/* Status Message */
+	$wp_customize->add_setting( 'status_message', array(
+		'default'			=> __( '', '_motorplex' ),
+		'sanitize_callback'	=> 'sanitize_text_field'
+	));
+	$wp_customize->add_control( 'status_message', array(
+		'settings'		=> 'status_message',
+		'section'		=> 'track_status',
+		'type'			=> 'text',
+		'label'			=> __( 'Status Message (optional)', '_motorplex' ),
+		'description'	=> __( 'Display a Status Message, i.e. \'Rain Delay\'', '_motorplex' )
+	));
+	/* Delay Time */
+	$wp_customize->add_setting( 'delay_time', array(
+		'default'			=> __( '00:00', '_motorplex' ),
+		'sanitize_callback'	=> 'sanitize_text_field'
+	));
+	$wp_customize->add_control( 'delay_time', array(
+		'settings'		=> 'delay_time',
+		'section'		=> 'track_status',
+		'type'			=> 'time',
+		'label'			=> __( 'Delay Time', '_motorplex' ),
+		'description'	=> __( 'Will Show as <em>Status Message</em> until <em>Time</em>.', '_motorplex' )
+	));
+
 	/* SOCIAL MEDIA SECTION */
 	$wp_customize->add_section( 'social_media', array(
 		'title'       => __( 'Social Media', '_motorplex' ),
@@ -96,9 +144,21 @@ function ta_customize_register( $wp_customize ) {
 		'label'			=> __( 'Display Social Media', '_motorplex' ),
 	));
 
+	/* YouTube */
+	$wp_customize->add_setting( 'youtube_url', array(
+		'default'			=> 'http://www.facebook.com/txmplex',
+		'sanitize_callback'	=> 'theme_slug_sanitize_url'
+	));
+	$wp_customize->add_control( 'youtube_url', array(
+		'settings'		=> 'youtube_url',
+		'section'		=> 'social_media',
+		'type'			=> 'url',
+		'label'			=> __( 'Youtube Channel URL', '_motorplex' ),
+	));
+
 	/* Facebook */
 	$wp_customize->add_setting( 'facebook_url', array(
-		'default'			=> 'http://www.facebook.com/taglobalmedia',
+		'default'			=> 'http://www.facebook.com/txmplex',
 		'sanitize_callback'	=> 'theme_slug_sanitize_url'
 	));
 	$wp_customize->add_control( 'facebook_url', array(
@@ -110,7 +170,7 @@ function ta_customize_register( $wp_customize ) {
 
 	/* Twitter */
 	$wp_customize->add_setting( 'twitter_url', array(
-		'default'			=> 'http://www.twitter.com/taglobalmedia',
+		'default'			=> 'http://www.twitter.com/txmplex',
 		'sanitize_callback'	=> 'theme_slug_sanitize_url'
 	));
 	$wp_customize->add_control( 'twitter_url', array(
@@ -118,6 +178,18 @@ function ta_customize_register( $wp_customize ) {
 		'section'		=> 'social_media',
 		'type'			=> 'url',
 		'label'			=> __( 'Twitter URL', '_motorplex' ),
+	));
+
+	/* Instagram */
+	$wp_customize->add_setting( 'insta_url', array(
+		'default'			=> 'http://instagram.com/texasmotorplex',
+		'sanitize_callback'	=> 'theme_slug_sanitize_url'
+	));
+	$wp_customize->add_control( 'insta_url', array(
+		'settings'		=> 'insta_url',
+		'section'		=> 'social_media',
+		'type'			=> 'url',
+		'label'			=> __( 'Instagram Handle URL', '_motorplex' ),
 	));
 
 	/* TRACKING SECTION */
@@ -140,7 +212,7 @@ function ta_customize_register( $wp_customize ) {
 	));
 	/* Google Analytics ID */
 	$wp_customize->add_setting( 'google_tag_id', array(
-		'default'			=> __( 'GTM-T76QC6J', '_motorplex' ),
+		'default'			=> __( '', '_motorplex' ),
 		'sanitize_callback'	=> 'theme_slug_sanitize_html'
 	));
 	$wp_customize->add_control( 'google_tag_id', array(
@@ -173,6 +245,23 @@ function ta_customize_register( $wp_customize ) {
 		'label'			=> __( 'Footer Scripts', '_motorplex' ),
 	));
 
+	/* API KEYS */
+	$wp_customize->add_section( 'api_keys', array(
+		'title'       => __( 'API Keys', '_motorplex' ),
+		'priority'    => 35,
+		'capability'  => 'edit_theme_options'
+	));
+	/* Google Maps API */
+	$wp_customize->add_setting( 'google_maps_api', array(
+		'default'			=> __( '', '_motorplex' ),
+		'sanitize_callback'	=> 'sanitize_text_field'
+	));
+	$wp_customize->add_control( 'google_maps_api', array(
+		'settings'		=> 'google_maps_api',
+		'section'		=> 'api_keys',
+		'type'			=> 'text',
+		'label'			=> __( 'Google Maps API Key', '_motorplex' )
+	));
 }
 add_action( 'customize_register', 'ta_customize_register' );
 

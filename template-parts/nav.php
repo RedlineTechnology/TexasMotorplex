@@ -9,36 +9,38 @@
 ?>
 
 <header>
-
 	<nav id="nav-desktop" class="nav-desktop">
-		<div id="main-navigation" class="nav-desktop-left">
+		<div id="nav-toggle" class="nav-desktop-left">
 			<a href="#" id="lefttray-toggle"><i class="fal fa-bars"></i></a>
-			<?php if (!is_home()) {
-				echo ta_get_menu_parent_children( 'menu-1' );
-				// wp_nav_menu( array(
-				// 	'theme_location' => 'menu-1',
-				// 	'menu_id'        => 'primary-menu',
-				// ) );
-			} ?>
 		</div>
-		<?php if (!is_home()) { ?>
-
-			<div id="site-branding" class="nav-desktop-mid">
-				<div class="menu-mid-menu-container">
-					<?php echo ta_get_menu_parent_children( 'menu-1', 'children' ); ?>
-				</div>
-				<div class="mobile logo-container"></div>
-			</div><!-- #site-branding -->
-
-		<?php } ?>
-		<div id="secondary-navigation" class="nav-desktop-right">
+		<div class="nav-desktop-logo"></div>
+		<div id="main-navigation" class="nav-desktop-right">
 			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-2',
-				'menu_id'        => 'secondary-menu',
-			) );
-			if (!is_home()) { echo '<a href="/"><div class="mobile logo-container"></div></a>'; }
+				wp_nav_menu( array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'primary-menu',
+				) );
 			?>
+			<div id="more-container">
+				<ul class="menu-item">
+					<li class="more menu-item-has-children">
+						<a href="">More</a>
+						<ul class="sub-menu" id="overflow"></ul>
+					</li>
+					<li class="button menu-item">
+						<a href="#">Buy Tickets</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</nav><!-- #main-navigation -->
 </header>
+
+<div class="statusbar">
+
+	<?php
+	  echo get_weather_status();
+		echo get_track_status();
+	 ?>
+
+</div>

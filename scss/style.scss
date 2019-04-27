@@ -53,7 +53,7 @@ Y8   Y8   .88    88   Yb.   88   88    88    8P   88   Yb.   88    88   88    8P
 
 /* FRAMEWORK */
 @import 'grid';
-@import url("https://use.typekit.net/cye1bnf.css");
+@import url("https://use.typekit.net/jjd8slg.css");
 @import 'typography';
 
 /* SUPPORT */
@@ -74,31 +74,26 @@ Y8   Y8   .88    88   Yb.   88   88    88    8P   88   Yb.   88    88   88    8P
   margin: 0 auto;
 }
 
-a[class*='button'] {
-  @include bodyfont;
-  font-size: 1.2em;
-  @include link_color(black,black);
-  -webkit-font-smoothing: antialiased;
-}
-
 button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-a.button {
-	@include bodyfont;
+a[class*='button'] {
+	@include lightfont;
+	text-transform: uppercase;
+	letter-spacing: .2em;
 	background: $red;
 	@include link_color(white,white);
 	text-decoration: none;
 	cursor: pointer;
 	min-width: 100%;
-	font-size: 1.4em;
-	border-radius: 0;
+	font-size: 2em;
+	border-radius: 5px;
 	border: none;
 	display: inline-block;
 	position: relative;
 	margin: 5px auto;
-	padding: .5em 1.25em;
+	padding: .5em 1em;
   transition: all 0.5s ease;
 
 	&, &:link, &:active {
@@ -108,8 +103,12 @@ a.button {
 		min-width: 100%;
 	  transition: all 0.5s ease;
 	}
+	&.inverted {
+		background: white;
+		@include link_color($red,$red);
+	}
 	@include breakpoint('desktop') {
-		min-width: 50%;
+		min-width: 100%;
 	}
 }
 .site-content .wp-block-button__link {
@@ -331,14 +330,6 @@ textarea {
 	width: 100%;
 }
 
-/*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-a {
-	cursor:pointer;
-	text-decoration: none;
-}
-
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -450,10 +441,6 @@ a {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-.sticky {
-	display: block;
-}
-
 .hentry {
 	margin: 0 0 1.5em;
 }

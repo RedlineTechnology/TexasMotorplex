@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){e(".accordion-tabs").accordionTabs({mediaQuery:"(min-width: 768px)"},{header:"h1",heightStyle:"content"},{show:{effect:"fade"}})});
