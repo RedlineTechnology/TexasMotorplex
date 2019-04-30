@@ -23,7 +23,7 @@
 			?>
 			<div id="more-container">
 				<ul class="menu-item">
-					<li class="more menu-item-has-children">
+					<li class="more menu-item-has-children" style="display: none;">
 						<a href="">More</a>
 						<ul class="sub-menu" id="overflow"></ul>
 					</li>
@@ -35,6 +35,21 @@
 		</div>
 	</nav><!-- #main-navigation -->
 </header>
+
+<div class="recentposts">
+<?php
+	$recent_posts = wp_get_recent_posts( array(
+		'numberposts' => 3,
+		'post_status' => 'publish'
+	));
+	$html = '<ul class="sub-menu">';
+	foreach( $recent_posts as $post ) {
+		$html .= '<li class="menu-item"><a href="' . get_permalink( $post["ID"] ) . '">' . $post["post_title"] . '</a></li>';
+	}
+	$html .= '<li class="menu-item"><a href="/archive">See All</a></li></ul>';
+	echo $html;
+?>
+</div>
 
 <div class="statusbar">
 

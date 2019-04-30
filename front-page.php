@@ -24,6 +24,9 @@ get_header();
 			<a class="button inverted">Buy Tickets</a>
 			<a class="sub lower" href="#">Plan Your Visit</a>
 		</div>
+		<div id="twitter-container">
+			<?php echo do_shortcode('[twitter_profile screen_name="txmplex" width="400" limit="1" chrome="nofooter,noborders,transparent"]'); ?>
+		</div>
 	</div>
 </section>
 
@@ -42,7 +45,7 @@ get_header();
 		<h1>Plan Your Visit</h1>
 		<?php get_template_part('/template-parts/planyourvisit'); ?>
 		<div class="frontpage-bannerad">
-			<img src="<?php echo get_stylesheet_directory_uri() . '/images/ennisyall.jpg'; ?>">
+			<?php echo adrotate_group(1); ?>
 		</div>
 	</div>
 </section>

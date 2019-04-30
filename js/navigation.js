@@ -5,6 +5,9 @@
  */
 
 jQuery(document).ready( function($){
+  // Add News Sub-Menu
+  $(".news").addClass('menu-item-has-children').append($(".recentposts .sub-menu"));
+
   // MOBILE MENU TOGGLE
   // Open Mobile Menu when Hamburger is Clicked
   $("#lefttray-toggle, #lefttray-close").click(function(e) {
@@ -29,12 +32,21 @@ jQuery(document).ready( function($){
     $(this).parent().find(".sub-menu").toggleClass("open")
   })
 
+  // Dim Video BG when Hovering over the menu
+  $("#nav-desktop li, #nav-desktop .sub-menu").hover(function() {
+    $(".video-container .filter").toggleClass("visible");
+  });
+
   // STICKY NAV
   $(window).scroll( function() {
     if( $(this).scrollTop() > 1 ) {
       $("#nav-desktop").addClass('sticky');
+      //hijacking this function to hide and show the twitter box
+      $("#twitter-container").addClass('visible');
     } else {
       $("#nav-desktop").removeClass('sticky');
+      //hijacking this function to hide and show the twitter box
+      $("#twitter-container").removeClass('visible');
     }
   });
 

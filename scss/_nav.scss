@@ -270,6 +270,14 @@ nav ul {
         }
       }
     }
+    &.news {
+      .sub-menu {
+        width: 300px;
+        li {
+          white-space: normal;
+        }
+      }
+    }
   }
 
   // STICKY NAV
@@ -294,6 +302,44 @@ nav ul {
 }
 #preload-logo {
   @include bgimage( $image:'motorplex_tm.png', $pos:-9999px -9999px, $size:1px );
+}
+
+// CUSTOM NAV LINK ICONS
+li {
+  &.merch {
+    margin-left: 1.5em;
+    position: relative;
+    &:before {
+      @include fontawesome(500);
+      content: "\f553";
+      position: absolute;
+      left: -1.5em;
+      width: 1.25em;
+      height: 1.75em;
+      line-height: 1.75em;
+      color: rgba(255,255,255,0.8);
+    }
+  }
+}
+#mobilenav li {
+  &.merch {
+    margin-left: 1.25em;
+    &:before {
+      font-weight: 300;
+      height: 2em;
+      line-height: 2em;
+      font-size: .8em;
+    }
+  }
+}
+.sticky, #mobilenav {
+  li {
+    &.merch {
+      &:before {
+        color: rgba(0,0,0,0.7);
+      }
+    }
+  }
 }
 
 // STATUS BAR
@@ -333,6 +379,10 @@ nav ul {
       color: yellow;
     }
   }
+}
+
+.recentposts {
+  display: none;
 }
 
 /* ////////////////////////////////////////////////////////////////////////// */
