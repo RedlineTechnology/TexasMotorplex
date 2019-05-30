@@ -45,8 +45,11 @@
 						<p>All Content Copyright &copy; <?php echo date("Y") . ' ' . get_bloginfo( 'name' ); ?></p>
 					</div>
 				</div>
-				<div class="col-4">
+				<div class="col-4 mobile-hidden">
 					<div class="fb-page" data-href="https://www.facebook.com/txmplex/" data-tabs="timeline, messages, events" data-width="400" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/txmplex/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/txmplex/">Texas Motorplex</a></blockquote></div>
+				</div>
+				<div class="col-4 mobile">
+					<div class="fb-page" data-href="https://www.facebook.com/txmplex/" data-tabs="timeline, messages, events" data-width="400" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/txmplex/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/txmplex/">Texas Motorplex</a></blockquote></div>
 				</div>
 			</div>
 			<div id="preload-logo"></div>

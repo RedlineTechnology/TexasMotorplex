@@ -22,5 +22,9 @@ if( $wp_query->have_posts() ) :
 
   endwhile;
 endif;
+
+wp_reset_postdata();
+wp_reset_query();
+
 ?>
 </div>

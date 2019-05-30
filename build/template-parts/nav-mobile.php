@@ -9,7 +9,6 @@
 ?>
 
 <div id="left-tray" class="left tray">
-	<div class="blurred"></div>
 	<nav id="mobilenav">
 		<i id="lefttray-close" class="fal fa-times"></i>
 		<?php

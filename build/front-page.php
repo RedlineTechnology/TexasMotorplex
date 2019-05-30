@@ -19,55 +19,42 @@ get_header();
 	</div>
 	<div class="content-container">
 		<div class="box">
-			<a class="sub upper" href="#">2019 Schedule</a>
-			<h1>Fall Nationals</h1>
-			<a class="button inverted">Buy Tickets</a>
-			<a class="sub lower" href="#">Plan Your Visit</a>
+			<a class="sub upper" href="/event-schedule">2019 Schedule</a>
+			<h1><?php echo stripcslashes( get_theme_mod('fp_cta_text')); ?></h1>
+			<a href="<?php echo get_theme_mod('fp_cta_link'); ?>" class="button inverted"><?php echo get_theme_mod('fp_cta_btntext'); ?></a>
+			<a class="sub lower" href="#planyourvisit">Plan Your Visit</a>
 		</div>
-		<div id="twitter-container">
-			<?php echo do_shortcode('[twitter_profile screen_name="txmplex" width="400" limit="1" chrome="nofooter,noborders,transparent"]'); ?>
-		</div>
+	</div>
+	<div id="twitter-container">
+		<?php echo do_shortcode('[twitter_profile screen_name="txmplex" width="400" limit="1" chrome="nofooter,noborders,transparent"]'); ?>
 	</div>
 </section>
 
 <section class="current row">
-	<div class="col-6">
+	<div class="col-6 latestnews">
 		<?php get_template_part('/template-parts/latestnews'); ?>
 	</div>
 	<div class="col-6">
 		<?php get_template_part('/template-parts/upcomingevents'); ?>
 	</div>
-	<div class="news-thumbs"></div>
+	<div class="news-thumbs-container"></div>
 </section>
 
-<section class="planyourtrip row">
+<section class="planyourtrip row" id="planyourvisit">
 	<div class="content-container">
 		<h1>Plan Your Visit</h1>
-		<?php get_template_part('/template-parts/planyourvisit'); ?>
-		<div class="frontpage-bannerad">
-			<?php echo adrotate_group(1); ?>
-		</div>
+		<?php get_template_part('/template-parts/planyourvisit');
+		if ( adrotate_group(1) ) : ?>
+			<div class="frontpage-bannerad">
+				<?php echo adrotate_group(1); ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </section>
 
 <section class="sponsors row">
 	<?php get_template_part('/template-parts/sponsors'); ?>
 </section>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-			<?php
-			while ( have_posts() ) :
-				the_post();
-
-				get_template_part( 'template-parts/content', 'page' );
-
-			endwhile; // End of the loop.
-			?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
 
 <?php
 get_sidebar();

@@ -126,6 +126,80 @@ function ta_customize_register( $wp_customize ) {
 		'description'	=> __( 'Will Show as <em>Status Message</em> until <em>Time</em>.', '_motorplex' )
 	));
 
+	/* CTAs */
+	$wp_customize->add_section( 'cta', array(
+		'title'       => __( 'CTA Header Banner', '_motorplex' ),
+		'priority'    => 30,
+		'capability'  => 'edit_theme_options'
+	));
+	/* Front-Page CTA Text */
+	$wp_customize->add_setting( 'fp_cta_text', array(
+		'default'			=> 'Fall Nationals',
+		'sanitize_callback'	=> 'sanitize_text_field'
+	));
+	$wp_customize->add_control( 'fp_cta_text', array(
+		'settings'		=> 'fp_cta_text',
+		'section'		=> 'cta',
+		'type'			=> 'text',
+		'label'			=> __( 'Front-Page Hero CTA Text', '_motorplex' ),
+	));
+	/* Front-Page CTA Button Text */
+	$wp_customize->add_setting( 'fp_cta_btntext', array(
+		'default'			=> 'Buy Tickets',
+		'sanitize_callback'	=> 'sanitize_text_field'
+	));
+	$wp_customize->add_control( 'fp_cta_btntext', array(
+		'settings'		=> 'fp_cta_btntext',
+		'section'		=> 'cta',
+		'type'			=> 'text',
+		'label'			=> __( 'Front-Page Hero CTA Button Text', '_motorplex' ),
+	));
+	/* Front-Page CTA URL */
+	$wp_customize->add_setting( 'fp_cta_link', array(
+		'default'			=> '/',
+		'sanitize_callback'	=> 'theme_slug_sanitize_url'
+	));
+	$wp_customize->add_control( 'fp_cta_link', array(
+		'settings'		=> 'fp_cta_link',
+		'section'		=> 'cta',
+		'type'			=> 'text',
+		'label'			=> __( 'Front-Page Hero CTA Link URL', '_motorplex' )
+	));
+	/* Post CTA Text */
+	$wp_customize->add_setting( 'cta_text', array(
+		'default'			=> 'Get the Texas Motorplex Newsletter',
+		'sanitize_callback'	=> 'theme_slug_sanitize_html'
+	));
+	$wp_customize->add_control( 'cta_text', array(
+		'settings'		=> 'cta_text',
+		'section'		=> 'cta',
+		'type'			=> 'text',
+		'label'			=> __( 'Post CTA Text', '_motorplex' ),
+	));
+	/* Post CTA Button Text */
+	$wp_customize->add_setting( 'cta_btntext', array(
+		'default'			=> 'Click Here',
+		'sanitize_callback'	=> 'sanitize_text_field'
+	));
+	$wp_customize->add_control( 'cta_btntext', array(
+		'settings'		=> 'cta_btntext',
+		'section'		=> 'cta',
+		'type'			=> 'text',
+		'label'			=> __( 'Post CTA Button Text', '_motorplex' ),
+	));
+	/* Post CTA URL */
+	$wp_customize->add_setting( 'cta_link', array(
+		'default'			=> '',
+		'sanitize_callback'	=> 'theme_slug_sanitize_url'
+	));
+	$wp_customize->add_control( 'cta_link', array(
+		'settings'		=> 'cta_link',
+		'section'		=> 'cta',
+		'type'			=> 'text',
+		'label'			=> __( 'Post CTA Link URL', '_motorplex' ),
+		'description'	=> __( 'Any text in this field will override the default lightbox settings which import page content from the /newsletter Page.', '_motorplex' )
+	));
+
 	/* SOCIAL MEDIA SECTION */
 	$wp_customize->add_section( 'social_media', array(
 		'title'       => __( 'Social Media', '_motorplex' ),

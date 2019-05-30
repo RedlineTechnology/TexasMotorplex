@@ -2,19 +2,100 @@
 /*                                   PAGES                                    */
 /* ////////////////////////////////////////////////////////////////////////// */
 
+#main.site-main {
+  section:not(.current) {
+    @include constrain;
+  }
+}
+
 .section {
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 4em 1em;
-  @include breakpoint('desktop') {
-    padding: 4em 2em;
-    flex-direction: row;
+  .archive &,
+  .single-post &,
+  .page & {
+    padding: 1em;
+    @include breakpoint('desktop') {
+      padding: 2em;
+    }
   }
   &.hero {
-    padding: 7em 1em 4em;
+    padding: 0;
+    min-height: 200px;
+    justify-content: center;
+    text-align: center;
+    @include bgimage('mplex_header.jpg');
     h1 {
+      color: white;
       margin: 0;
+      font-size: 1em;
+    }
+    .content-container {
+      background-color: rgba($blue, 0.5);
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+      padding: 1em 5em;
+      div {
+        margin: 0 auto;
+      }
+    }
+    @include breakpoint('desktop') {
+      font-size: 3em;
+    }
+  }
+  &.single-post {
+    padding: 1em;
+    .the-deets {
+      @include lightfont;
+      text-align: right;
+      color: $red;
+      font-style: italic;
+      padding: 0;
+    }
+    .the-content {
+      @include constrain;
+      line-height: 1.75em;
+      position: relative;
+      h2 {
+        color: $red;
+      }
+      &:after {
+        content: "";
+        width: 90%;
+        height: 1px;
+        display: block;
+        border-top: solid 5px $red;
+        position: absolute;
+        bottom: .75em;
+        left: 1em;
+      }
+    }
+    .fb-like, .fb-comments {
+      @include constrain;
+      margin: 0 auto;
+    }
+  }
+  @include breakpoint('desktop') {
+    padding: 2em;
+    flex-direction: row;
+    &.hero {
+      min-height: 400px;
+    }
+    &.single-post {
+      flex-direction: column;
+      .the-content {
+        &:after {
+          width: 100%;
+        }
+      }
     }
   }
   h2 {
@@ -30,79 +111,50 @@
   & > div {
     padding: 1em;
   }
-  .innerbox {
-    h1 {
-      margin-top: 0;
-    }
-    margin: 1em auto;
-    padding: 1em;
-    max-width: 100%;
-    text-align: left;
-    font-size: 1.2em;
-    background: rgba(255,255,255,0.75);
-    color: rgba(0,0,0,0.9);
-    @include breakpoint('desktop') {
-      margin: 2em;
-      padding: 2em;
-      max-width: 50%;
-      &.full {
-        max-width: 100%;
-      }
-    }
-    h1,h2,h3,h4,h5,h6 {
-      color: $red;
-    }
-    &.dark {
-      background: rgba(0,0,0,0.7);
-      color: white;
-      h1,h2,h3,h4,h5,h6 {
-        color: white;
-      }
-    }
-    &.center {
-      text-align: center;
-    }
-  }
-  .innerImage {
-    max-width: 100%;
-    height: 100px;
-    margin: 0 1em;
-    @include bgimage('http://www.placekitten.com/400/400');
-    @include breakpoint('desktop') {
-      width: 30%;
-      height: auto;
-      margin: 10vh auto;
-    }
-  }
 }
 
-.lower-arrow {
-  background: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100% !important;;
-  max-width: 100% !important;
+.page .section .hero {
+  min-height: 300px;
+}
+
+.cta {
+  background: $red;
+  color: white;
   text-align: center;
-  box-sizing: border-box;
-  font-size: 1.2em;
-  &:before {
-    content: '\f078';
-    @include fontawesome(300);
-    font-size: 2em;
-    position: absolute;
-    left: 0;
-    width: 100%;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+  div {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin: 0 auto;
+    padding: .25em 0 0;
     text-align: center;
-    bottom: .5em;
-    margin-left: -.25em;
-    color: black;
-  }
-  &.white {
-    &:before {
+    align-items: center;
+    justify-content: center;
+    h3 {
       color: white;
+      line-height: 1em;
+    }
+  }
+  a {
+    background: white;
+    color: $red;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: .25em 2em;
+    margin: .5em 1em;
+    border-radius: 5px;
+    height: 100%;
+    display: block;
+    transition: padding .2s ease-out;
+    &:hover, &:active, &:focus {
+      padding: .25em 4em;
+    }
+  }
+  @include breakpoint('desktop') {
+    div {
+      flex-direction: row;
+      padding: 0;
     }
   }
 }
@@ -195,6 +247,27 @@ article {
 /*--------------------------------------------------------------
 # CONTACT TAG
 --------------------------------------------------------------*/
+
+#people.section > div {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.person {
+  a, a:visited, a:link {
+    color: $red;
+  }
+  &:nth-child(2n-1) {
+    h4 {
+      color: $red;
+    }
+  }
+}
+.person.animate.visible {
+    opacity: 1;
+}
 
 .contact-tag {
   display: inline-flex;
@@ -300,41 +373,111 @@ article {
     @include bgimage('http://placekitten.com/1200/400');
     justify-content: center;
     text-align: center;
+    position: relative;
     h1 {
       color: white;
     }
   }
-  .page-content {
-    flex-direction: column;
-    & > div {
-      max-width: $contentWidth;
-      margin: 0 auto;
-      span {
-        @include headlinefont;
-        text-transform: uppercase;
-        color: $red;
-      }
-    }
-    .wp-block-column {
-      text-align: center;
-      margin-left: 0;
-      @include breakpoint('desktop') {
-        text-align: left;
-        &:not(:first-child) {
-          margin-left: 1em;
+  section {
+    &.page-content {
+      padding: 1em;
+      @include constrain;
+      flex-direction: column;
+      .the-content {
+        position: relative;
+        h2 {
+          color: $red;
+        }
+        &:after {
+          content: "";
+          width: 90%;
+          height: 1px;
+          display: block;
+          border-top: solid 5px #a72727;
+          position: absolute;
+          bottom: .75em;
+          left: 1em;
         }
       }
-    }
-    h5 {
-      color: $red;
-      line-height: 1em;
+      @include breakpoint('desktop') {
+        padding: 4em 1em;
+        .the-content {
+          &:after {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }
 
-.home {
-  .hero {
-    background: rgba($blue, 0.5);
+/*--------------------------------------------------------------
+# ARCHIVE PAGES
+--------------------------------------------------------------*/
+
+.archive {
+  .wrapper {
+    @include constrain;
+  }
+}
+
+.archive-listing {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 4em 0 !important;
+  article {
+    width: 350px;
+    margin: 0 auto 4em;
+    border-bottom: 5px solid $red;
+    .featured-img {
+      @include bgimage('mplex_header.jpg');
+      width: 100%;
+      height: 100px;
+    }
+    h2 {
+      font-size: 2em;
+    }
+  }
+  @include breakpoint('desktop') {
+    align-items: flex-start;
+    justify-content: space-evenly;
+    article {
+      width: 450px;
+      margin: 0 0 2em;
+      .featured-img {
+        height: 0;
+        padding-bottom: 50%;
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# SEARCH AND 404
+--------------------------------------------------------------*/
+
+input[type="search"] {
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+# SPONSOR PAGE
+--------------------------------------------------------------*/
+
+.page-sponsors {
+  section.sponsors {
+    .sponsor-slider {
+      display: flex;
+      flex-flow: nowrap;
+    }
+    max-width: 100% !important;
+    background: $red;
+    img {
+      max-width: 100px;
+    }
   }
 }
 
@@ -342,7 +485,10 @@ article {
 /*                                    HOME                                    */
 /* ////////////////////////////////////////////////////////////////////////// */
 
-.home {
+.home, .page-home {
+  .hero {
+    position: relative;
+  }
   .hero .content-container {
     background-color: rgba($blue, 0.5);
     position: absolute;
@@ -353,6 +499,7 @@ article {
     min-height: $fullheight;
     text-align: center;
     z-index: 2;
+    padding: 2em;
     .box {
       color: white;
       margin: 0 auto;
@@ -362,10 +509,16 @@ article {
     h1 {
       @include headlinefont;
       font-style: italic;
-      font-size: 5em;
+      font-size: 3em;
       letter-spacing: -.05em;
       font-weight: 900;
       margin: 0;
+    }
+    @include breakpoint('desktop') {
+      padding: 0;
+      h1 {
+        font-size: 5em;
+      }
     }
     .sub {
       @include superheavyfont;
@@ -380,19 +533,19 @@ article {
         position: absolute;
         content: "";
         visibility: visible;
-        width: 50%;
+        width: 80%;
         height: 10px;
         background: white;
         border-radius: 2px;
       }
       &.upper {
         margin-bottom: 20px;
-        text-align: left;
+        text-align: center;
         left: 0;
         -webkit-transition: left 0.2s ease-out;
         transition: left 0.2s ease-out;
         &:after {
-          left: 0;
+          left: 10%;
           -webkit-transition: left 0.2s ease-out;
           transition: left 0.2s ease-out;
         }
@@ -405,12 +558,12 @@ article {
       }
       &.lower {
         margin-top: 20px;
-        text-align: right;
+        text-align: center;
         right: 0;
         -webkit-transition: right 0.2s ease-out;
         transition: right 0.2s ease-out;
         &:after {
-          right: 0;
+          right: 10%;
           -webkit-transition: right 0.2s ease-out;
           transition: right 0.2s ease-out;
         }
@@ -418,6 +571,22 @@ article {
           right: 20px;
           &:after {
             right: -20px;
+          }
+        }
+      }
+      @include breakpoint('desktop') {
+        &.upper {
+          text-align: left;
+          &:after {
+            left: 0;
+            width: 50%;
+          }
+        }
+        &.lower {
+          text-align: right;
+          &:after {
+            right: 0;
+            width: 50%;
           }
         }
       }
@@ -432,88 +601,31 @@ article {
       height: 1em;
       width: 2em;
       position: absolute;
-      bottom: 1em;
+      bottom: 2.5em;
       left: 50%;
       margin-left: -1em;
+      @include breakpoint('desktop') {
+        bottom: 1em;
+      }
     }
   }
   .current {
-    padding: 100px 0;
-    position: relative;
-    overflow: hidden;
     article {
       max-width: 600px;
-      margin: 0 0 10px auto;
-      a {
-        &:hover, &:active, &:focus {
-          h2 span {
-            background: rgba(255,255,255,0.9);
-          }
-        }
-      }
-    }
-    h2 {
-      display: inline;
-      padding-left: 10px;
-      padding-bottom: 3px;
-      span {
-        box-decoration-break: clone;
-        padding: 0 0 0 10px;
-        -webkit-box-decoration-break: clone;
-      }
     }
     .col-6 {
+      text-align: left;
       z-index: 1;
     }
-    .col-6:first-child {
-      text-align: right;
-      .sectiontitle {
-        right: 0;
-        left: auto;
-        -webkit-transition: right 0.2s ease-out;
-        transition: right 0.2s ease-out;
-        &:after {
-          right: 0;
-          left: auto;
-          -webkit-transition: right 0.2s ease-out;
-          transition: right 0.2s ease-out;
-        }
-        &:hover, &:active, &:focus {
-          right: 20px;
-          left: auto;
-          &:after {
-            right: -20px;
-            left: auto;
-          }
+    @include breakpoint('desktop') {
+      h2 {
+        padding-left: 10px;
+        span {
+          padding: 0 0 0 10px;
         }
       }
-    }
-    .news-thumbs {
-      content:"";
-      display: block;
-      overflow: hidden;
-      transform: rotate(20deg);
-      height: 130%;
-      top: -25%;
-      width: 400px;
-      left: -10%;
-      position: absolute;
-      z-index: 0;
-      opacity: 0;
-      -webkit-transition: all 0.2s ease-out;
-      transition: all 0.2s ease-out;
-      &.show {
-        opacity: 1;
-        left: -5%;
-      }
-      div {
-        height: 90%;
-        width: 800px;
-        transform: rotate(340deg);
-        background-image: url('http://www.placekitten.com/1200/400');
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
+      .col-6:first-child {
+        text-align: right;
       }
     }
   }
@@ -524,23 +636,20 @@ article {
       width: 100%;
       text-align: center;
       color: white;
-      padding: 100px 0 150px;
+      padding: 2em 0 4em;
     }
     section {
-      color: $red;
-      height: inherit;
-      height: 400px;
       &.directions {
-        overflow: hidden;
         .col-6:nth-child(2n) {
-          padding: 1.5em 1.5em 1.5em 0;
-          height: 400px;
-          overflow-y: scroll;
+          padding: 1.5em;
+          text-align: left;
         }
       }
       &.gatepolicies {
-        padding: 1.5em;
-        overflow-y: scroll;
+        div {
+          padding: 1.5em;
+          text-align: left;
+        }
         ul {
           list-style: disc;
           margin: 0 0 1.5em 1em;
@@ -550,7 +659,6 @@ article {
         }
       }
       &.hotels {
-        overflow-y: scroll;
         .row {
           border-bottom: 1px solid #ccc;
         }
@@ -568,15 +676,160 @@ article {
         color: black;
       }
     }
+    @include breakpoint('desktop') {
+      .content-container {
+        padding: 100px 0 150px;
+      }
+      section {
+        &.directions {
+          overflow: hidden;
+          .col-6:nth-child(2n) {
+            height: 400px;
+            padding: 1.5em 1.5em 1.5em 0;
+            overflow-y: scroll;
+          }
+        }
+      }
+    }
   }
   .sponsors {
     background: $red;
   }
 }
 
+.current {
+  overflow: hidden;
+  position: relative;
+  padding: 2em;
+  .latestnews {
+    z-index: 1;
+    padding-bottom: 2em;
+  }
+  article {
+    margin: 0 0 10px auto;
+    .featured-img {
+      @include bgimage('mplex_header.jpg');
+      width: 100%;
+      height: 50px;
+    }
+    a {
+      &:hover, &:active, &:focus {
+        h2 span {
+          background: rgba(255,255,255,0.9);
+        }
+      }
+    }
+  }
+  h2 {
+    display: inline;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    span {
+      box-decoration-break: clone;
+      padding: 0 10px 0 0;
+      -webkit-box-decoration-break: clone;
+    }
+  }
+  @include breakpoint('desktop') {
+    padding: 100px 2em;
+    border-top: 1px solid #a72727;
+  }
+  .news-thumbs-container {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    .news-thumbs {
+      display: flex;
+      position: absolute;
+      top: 0;
+      justify-content: flex-end;
+      left: -50%;
+      height: 100%;
+      width: 80%;
+      z-index: 0;
+      opacity: 0;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+      @include bgimage($image:'mplex_header.jpg', $pos:200px center);
+      div {
+        width: 100%;
+        height: 100%;
+        @include bgimage($image:'diagonal-left.png', $pos:top right, $rep:no-repeat, $size:contain );
+        position: relative;
+        right: -1px;
+      }
+      &.show {
+        opacity: 1;
+        left: -45%;
+      }
+    }
+    &.alignright {
+      .news-thumbs {
+        justify-content: flex-start;
+        left: auto;
+        right: -50%;
+        background-position: -200px center;
+        div {
+          @include bgimage($image:'diagonal-right.png', $pos:top left, $rep:no-repeat, $size:contain );
+          right: auto;
+          left: -1px;
+        }
+        &.show {
+          left: auto;
+          right: -45%;
+        }
+      }
+    }
+  }
+  .readmore {
+    display: block;
+    text-align: center;
+    margin-top: 1em;
+  }
+  @include breakpoint('desktop') {
+    .col-6:first-child {
+      .sectiontitle {
+        right: 0;
+				text-align: right;
+			  left: auto;
+			  -webkit-transition: right 0.2s ease-out;
+			  transition: right 0.2s ease-out;
+        &:after {
+          right: 0;
+			    left: auto;
+			    -webkit-transition: right 0.2s ease-out;
+			    transition: right 0.2s ease-out;
+        }
+        &:hover, &:active, &:focus {
+          right: 20px;
+          left: auto;
+          &:after {
+            right: -20px;
+            left: auto;
+          }
+        }
+      }
+      .readmore {
+        text-align: right;
+      }
+    }
+    .readmore {
+      text-align: left;
+    }
+  }
+}
+.single-post .latestnews {
+  @include constrain;
+}
+
+
+
 nav.accordion-tabs {
   width: 80%;
-  margin: 50px auto 0;
+  margin: 35px auto 0;
   min-width: 400px;
   max-width: 800px;
   .accordion-tab-headings {
@@ -595,10 +848,70 @@ nav.accordion-tabs {
         color: $red;
       }
     }
+    @include breakpoint('desktop') {
+      margin: 50px auto 0;
+    }
   }
   .accordion-tab-content {
     background: white;
     text-align: left;
+    position: relative;
+    section {
+      color: $red;
+      overflow: hidden;
+      & > div {
+        overflow-y: scroll;
+      }
+      h3 {
+        text-align: center;
+        padding: .25em .5em;
+        line-height: 1em;
+        border-top: 1px solid rgba($red, 0.5);
+        &.ui-accordion-header-active {
+          background: $red;
+          color: white;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+      }
+      .ui-accordion-content,
+      .ui-accordion-content-active {
+        height: 400px;
+      }
+      &:after { // lower scroll-helper for accordion
+        @include fontawesome(600);
+        content:"\f107" !important;
+        display: none !important;
+        font-size: 2em;
+        color: white;
+        text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height:50px;
+        bottom: 0;
+        opacity: 0;
+        transition: opacity .2s ease-out;
+        @include bggradient($top: rgba(0,0,0,0), $bottom: rgba(0,0,0,0.5));
+      }
+      &.scroll-helper-show {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+    @include breakpoint('desktop') {
+      section {
+        height: 400px;
+        overflow-y: scroll;
+        h3 {
+          display: none;
+        }
+        &:after {
+          display: flex !important;
+        }
+      }
+    }
   }
 }
 
@@ -611,4 +924,8 @@ nav.accordion-tabs {
   img {
     width: 100%;
   }
+}
+.bannerad {
+  @include constrain;
+  margin: 0 auto;
 }

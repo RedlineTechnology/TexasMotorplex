@@ -13,7 +13,7 @@
 		<div id="nav-toggle" class="nav-desktop-left">
 			<a href="#" id="lefttray-toggle"><i class="fal fa-bars"></i></a>
 		</div>
-		<div class="nav-desktop-logo"></div>
+		<a class="nav-desktop-logo" href="/"></a>
 		<div id="main-navigation" class="nav-desktop-right">
 			<?php
 				wp_nav_menu( array(

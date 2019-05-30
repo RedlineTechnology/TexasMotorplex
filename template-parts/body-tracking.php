@@ -9,5 +9,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Facebook Javascript SDK -->
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2350904371853229&autoLogAppEvents=1"></script>
 <!-- End Facebook Javascript SDK -->
+
+<?php // Need a Different APP ID? ?>

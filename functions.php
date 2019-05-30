@@ -98,11 +98,6 @@ add_action( 'widgets_init', 'motorplex_widgets_init' );
 function motorplex_scripts() {
 
 	wp_enqueue_script( 'jquery' );
-
-	// Frosted Glass Effect is really cool, but unfortunately it's just a huge page load. Not gonna fly. Leaving the files and scripts intact, but disabling.
-	// wp_enqueue_script( 'html2canvas', get_template_directory_uri() . '/js/html2canvas.min.js', array(), '20190215', true );
-	// wp_enqueue_script( 'StackBlur', get_template_directory_uri() . '/js/stackblur.min.js', array(), '20190216', true );
-
 	// Custom Mobile Navigation JS
 	wp_enqueue_script( 'motorplex-navigation', get_template_directory_uri() . '/js/navigation.min.js', array('jquery'), '20190422', true );
 	// This thing
@@ -255,10 +250,11 @@ function load_accordion_tabs() {
   // Accordion built on jquery ui - only load the necessary components and dependencies
   // https://developer.wordpress.org/reference/functions/wp_enqueue_script/
 	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'jquery-ui' );
   wp_enqueue_script( 'jquery-ui-tabs' );
   wp_enqueue_script( 'jquery-ui-accordion' );
   wp_enqueue_script( 'jquery-effects-core' );
   wp_enqueue_script( 'jquery-effects-fade' );
-	wp_enqueue_script( 'responsive-accordion-tabs', get_template_directory_uri() . '/js/accordion-tabs.min.js', array('jquery'), '20190423', true );
+	wp_enqueue_script( 'responsive-accordion-tabs', get_template_directory_uri() . '/js/accordion-tabs.js', array('jquery'), '20190423', true );
   wp_enqueue_script( 'accordion-options', get_template_directory_uri() . '/js/accordion-options.js', array('jquery','responsive-accordion-tabs'), '20190424', true );
 }

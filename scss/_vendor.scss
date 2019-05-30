@@ -355,6 +355,7 @@ html.with-featherlight {
 
 .featherlight {
 	display: none;
+  overflow-y: scroll;
 
 	/* dimensions: spanning the background from edge to edge */
 	position:fixed;
@@ -369,9 +370,8 @@ html.with-featherlight {
 
 	/* styling */
 	cursor: pointer;
-	background: #333;
 	/* IE8 "hack" for nested featherlights */
-	background: rgba(0, 0, 0, 0);
+	background: rgba(0, 0, 0, 0.8);
 
 	/* support for nested featherlights. Does not work in IE8 (use JS to fix) */
 	&:last-of-type {
@@ -409,15 +409,24 @@ html.with-featherlight {
 			padding: 25px 25px 0;
 			border-bottom: 25px solid transparent;
 		}
+    input[type="checkbox"] + label, input[type="radio"] + label {
+      color: white;
+      &:before {
+        background: white;
+      }
+    }
 	}
 	/* contains the content */
 	&-inner {
 		/* make sure its visible */
 		display: block;
     margin-top: .4em;
+    margin-bottom: 4em;
 	}
 	&-close-icon {
 		position: absolute;
+    z-index: 999999;
+    padding: .5em;
     top:0;
     right:-.5em;
     font-size: 2em;
@@ -437,6 +446,20 @@ html.with-featherlight {
 		/* styling */
 		border: none;
 	}
+  @include breakpoint('desktop') {
+    &-close-icon {
+      right: -1em;
+    }
+  }
+}
+
+div[id$="-lightbox"] {
+  display: none;
+}
+.featherlight-content {
+  div[id$="-lightbox"] {
+    display: block;
+  }
 }
 
 /* hide non featherlight items when printing */
@@ -444,6 +467,28 @@ html.with-featherlight {
 	html.with-featherlight > * > :not(.featherlight) {
 		display: none;
 	}
+}
+
+/* ////////////////////////////////////////////////////////////////////////// */
+/*                                MAILCHIMP                                   */
+/* ////////////////////////////////////////////////////////////////////////// */
+
+p a[title="View previous campaigns"] {
+  display: none;
+}
+#newsletter-lightbox {
+  #mc_embed_signup {
+    width: 350px;
+    .size1of2 {
+      width: 100%;
+    }
+    @include breakpoint('desktop') {
+      width: 600px;
+      .size1of2 {
+        width: 46%;
+      }
+    }
+  }
 }
 
 /* ////////////////////////////////////////////////////////////////////////// */
@@ -498,19 +543,6 @@ html.with-featherlight {
     background-size: cover;
     background-repeat: no-repeat;
   }
-  .filter {
-    z-index: 1;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity .2s ease-out .1s;
-    &.visible {
-      opacity: 1;
-      transition: opacity .2s ease-out;
-    }
-  }
   video {
     position: absolute;
     z-index: 0;
@@ -523,10 +555,27 @@ html.with-featherlight {
     }
   }
 }
+// Moved FILTER outside of .video-container so it could be used globally
+.filter {
+  z-index: 1;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .2s ease-out .1s;
+  &.visible {
+    opacity: 1;
+    transition: opacity .2s ease-out;
+  }
+}
 @media all and (min-width: 62em) {
   .video-container video {
     left: 0;
   }
+}
+.single-post .filter {
+  z-index: 3;
 }
 
 /* ////////////////////////////////////////////////////////////////////////// */
@@ -565,12 +614,11 @@ html.with-featherlight {
     }
     .evcal_desc {
       position: relative;
-      padding: 10px 100px 0 4em !important;
+      padding: 0 1px 0 4em !important;
       span {
         color: $red !important;
         &.evo_above_title {
-          position: absolute;
-          right: 1.5em;
+          display: none !important;
         }
         &.evcal_event_title {
           @include bodyfont;
@@ -587,6 +635,9 @@ html.with-featherlight {
           @include bodyfont;
           color: black !important;
         }
+      }
+      @include breakpoint('desktop') {
+        padding: 10px 120px 0 4em !important;
       }
     }
     &:after {
@@ -612,17 +663,14 @@ html.with-featherlight {
       .evcal_desc span {
         color: white !important;
         &.evo_above_title {
-          top: 1em;
-          span {
-            color: $red !important;
-          }
+          display: none !important;
         }
         &.evcal_event_title {
           top: 5px;
         }
       }
       &:before {
-        left: 0px;
+        left: 5px;
         opacity: 1;
       }
     }
@@ -658,12 +706,11 @@ html.with-featherlight {
   }
   .evcal_desc {
     position: relative;
-    padding: 10px 100px 0 4em !important;
+    padding: 0 1px 0 4em !important;
     span {
       color: $red !important;
       &.evo_above_title {
-        position: absolute;
-        right: 2em;
+        display: none !important;
       }
       &.evcal_event_title {
         @include bodyfont;
@@ -681,13 +728,19 @@ html.with-featherlight {
         color: black !important;
       }
     }
+    @include breakpoint('desktop') {
+      padding: 10px 100px 0 4em !important;
+    }
   }
   &:after {
     display: none !important;
   }
 }
-// Turn "Learn More" into "Buy Tickets"
 .evo_lightbox_content {
+  margin: 60px auto 150px !important;
+}
+// Turn "Learn More" into "Buy Tickets"
+.evo_lightbox_content, .evo_page_content {
   div[class*='learn'] {
     .evcal_evdata_row {
       background: $red;
@@ -702,21 +755,79 @@ html.with-featherlight {
         }
       }
       h3 {
-        color: $red !important;
+        color: white !important;
         position: relative;
         padding: 0;
-        &:after {
-          width: 100%;
-          height: 1em;
-          content:"Buy Tickets";
-          display: block;
-          position: absolute;
-          top: 0;
-          color: white;
-        }
       }
     }
   }
+}
+// Custom Facebook "Learn More" Button ...I guess I'm doing this backwards. Oh well.
+.evo_metarow_details {
+  border-bottom: none !important;
+}
+.evo_metarow_cusF1 {
+  padding-top: 0 !important;
+  .evcal_evdata_custometa_icons,
+  .evcal_evdata_cell h3 {
+    display: none !important;
+  }
+  a.evo_cusmeta_btn.evcal_btn {
+    background: #3C5A99 !important;
+    margin: -1em 0 0 0 !important;
+    padding: 1em 1.5em !important;
+  }
+}
+// Events Page
+.evo_month_title {
+  color: $red !important;
+}
+.ajde_evcal_calendar.boxy {
+  .evcal_month_line {
+    p {
+      color: $red;
+    }
+    border-bottom: 5px solid $red;
+    margin-bottom: 1em;
+  }
+  #evcal_list {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+  }
+}
+.ajde_evcal_calendar.boxy .eventon_list_event,
+.ajde_evcal_calendar.boxy .evoShow_more_events {
+  background-color: $red;
+  margin-bottom: 1em;
+  width: 49%;
+  margin-bottom: 1em;
+  .evcal_list_a {
+    padding-top: 200px !important;
+    &:before {
+      width: 100%;
+      transform: none;
+      top: 0;
+      left: 0;
+    }
+    .evcal_cblock {
+      color: white !important;
+      padding: .25em 0 0 .25em !important;
+    }
+  }
+  .evcal_desc {
+    padding: 10px 15px 0 4em !important;
+    & span,
+    & span.evcal_event_title,
+    & span.evcal_event_subtitle {
+      color: white !important;
+    }
+  }
+}
+
+.evcal_list_a {
+  display: flex;
+  align-items: flex-end;
 }
 
 /* ////////////////////////////////////////////////////////////////////////// */
@@ -726,14 +837,18 @@ html.with-featherlight {
 #twitter-container {
   opacity: 0;
   transition: opacity .2s ease-out;
+  bottom: 2em;
+  right: 2em;
+  width: auto;
+  z-index: 3;
   &.visible {
     opacity: 1;
   }
+  @include breakpoint('desktop') {
+    position: absolute !important;
+  }
 }
 #twitter-widget-0 {
-  position: absolute !important;
-  bottom: 2em;
-  right: 2em;
   border-radius: 10px;
   background-color: rgba(255,255,255,0.5);
   transition: background-color .2s ease-out;

@@ -32,9 +32,9 @@ jQuery(document).ready( function($){
     $(this).parent().find(".sub-menu").toggleClass("open")
   })
 
-  // Dim Video BG when Hovering over the menu
+  // Dim Hero when Hovering over the menu
   $("#nav-desktop li, #nav-desktop .sub-menu").hover(function() {
-    $(".video-container .filter").toggleClass("visible");
+    $(".filter").toggleClass("visible");
   });
 
   // STICKY NAV
@@ -48,6 +48,30 @@ jQuery(document).ready( function($){
       //hijacking this function to hide and show the twitter box
       $("#twitter-container").removeClass('visible');
     }
+  });
+
+  // SCROLL UI HINT INSIDE ACCORDION WINDOW
+  var $scrollWindow = $( ".accordion-tab-content .section-content-primary" );
+  $scrollWindow.each( function() {
+    if( $(this).prop("scrollHeight") > $(this).closest( "section" ).innerHeight() ) {
+      $(this).closest( "section" ).addClass("scroll-helper-show");
+    }
+  });
+  $scrollWindow.each( function() {
+    $(this).scroll( function() {
+      if( $(this).scrollTop() > 1 ) {
+        $(this).closest( "section" ).removeClass("scroll-helper-show");
+      } else {
+        $(this).closest( "section" ).addClass("scroll-helper-show");
+      }
+    });
+    $(this).closest( "section" ).scroll( function() {
+      if( $(this).scrollTop() > 1 ) {
+        $(this).removeClass("scroll-helper-show");
+      } else {
+        $(this).addClass("scroll-helper-show");
+      }
+    });
   });
 
   // NAV OVERFLOW

@@ -3,7 +3,7 @@ Theme Name: Texas Motorplex Theme
 Author: Jason Subers
 Author URI: https://github.com/jasonsubers
 Description: Custom Theme for Texas Motorplex
-Version: 0.1
+Version: 1.0
 Text Domain: _motorplex
 
                  db             .dP"Yb                         dP"Yb.                   .dP'
@@ -78,7 +78,8 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-a[class*='button'] {
+a[class*='button'],
+.featherlight #mc_embed_signup .button {
 	@include lightfont;
 	text-transform: uppercase;
 	letter-spacing: .2em;
@@ -92,6 +93,7 @@ a[class*='button'] {
 	border: none;
 	display: inline-block;
 	position: relative;
+	height: auto;
 	margin: 5px auto;
 	padding: .5em 1em;
   transition: all 0.5s ease;
@@ -102,6 +104,7 @@ a[class*='button'] {
 	&:hover, &:active, &:focus {
 		min-width: 100%;
 	  transition: all 0.5s ease;
+		background: $red;
 	}
 	&.inverted {
 		background: white;
@@ -269,6 +272,32 @@ input[type="radio"] {
   }
 }
 
+// No Fanciness for the Job App page
+table[class*="job-apply-table"] {
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="password"],
+	input[type="search"],
+	input[type="number"],
+	input[type="tel"],
+	input[type="range"],
+	input[type="date"],
+	input[type="month"],
+	input[type="week"],
+	input[type="time"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="color"] {
+		width: 100%;
+	}
+	input[type="radio"],
+	input[type="checkbox"] {
+		position: static;
+		opacity: 1;
+	}
+}
+
 // FANCY SELECT
 div[class$="-field-select"] {
   padding: 10px;
@@ -373,28 +402,6 @@ textarea {
 /* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
 	outline: 0;
-}
-
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
-.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.5em;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.5em;
-}
-
-.aligncenter {
-	clear: both;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 /*--------------------------------------------------------------

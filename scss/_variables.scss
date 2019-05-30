@@ -3,8 +3,8 @@
 /* ////////////////////////////////////////////////////////////////////////// */
 
 $sitewidth: 900px;
-$contentWidth: 58em;
-$fullheight: calc(100vh - 4em);
+$contentWidth: 60em;
+$fullheight: calc(100vh - 2em);
 
 $pad_sm: 1.125em;
 $pad_md: 1.5em;
@@ -30,6 +30,12 @@ $imagepath:   $themepath + 'images/';
   display: block;
   content: "";
   clear: both;
+}
+
+@mixin constrain {
+  width: 100%;
+  max-width: $contentWidth;
+  margin: 0 auto;
 }
 
 @mixin breakpoint($point) {

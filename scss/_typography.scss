@@ -75,20 +75,20 @@ h1 {
 	@include headlinefont;
 	text-transform: uppercase;
 	font-style: italic;
-	font-size: 5em;
+	font-size: 3em;
 	letter-spacing: -.05em;
 	font-weight: 900;
 	margin: 0;
 }
 h2 {
 	@include headlinefont;
-	font-size: 2em;
+	font-size: 1.5em;
 	font-weight: 600;
 	letter-spacing: .02em;
 }
 h3 {
 	@include superheavyfont;
-	font-size: 1.75em;
+	font-size: 1.5em;
 	text-transform: uppercase;
 	color: $red;
 }
@@ -197,27 +197,60 @@ a {
 		display: inline-block;
 		text-decoration: none;
 		width: 100%;
+		text-align: center;
 		margin-bottom: 20px;
-		left:0;
 		-webkit-transition: left 0.2s ease-out;
 		transition: left 0.2s ease-out;
-		&:after {
-			display: block;
-			position: absolute;
-			content: "";
-			visibility: visible;
-			width: 50%;
-			height: 10px;
-			background: $red;
-			border-radius: 2px;
-			left: 0;
-			-webkit-transition: left 0.2s ease-out;
-			transition: left 0.2s ease-out;
+		background: $red;
+		h3 {
+			color: white;
 		}
-		&:hover, &:active, &:focus {
-			left: 20px;
+		@include breakpoint('desktop') {
+			left: 0;
+			text-align: left;
+			background: none;
+			h3 {
+				color: $red;
+			}
 			&:after {
-				left: -20px;
+				display: block;
+				position: absolute;
+				content: "";
+				visibility: visible;
+				width: 50%;
+				height: 10px;
+				background: $red;
+				border-radius: 2px;
+				left: 0;
+				-webkit-transition: left 0.2s ease-out;
+				transition: left 0.2s ease-out;
+			}
+			&:hover, &:active, &:focus {
+				left: 20px;
+				&:after {
+					left: -20px;
+				}
+			}
+			&.alignright {
+			  right: 0;
+				text-align: right;
+			  left: auto;
+			  -webkit-transition: right 0.2s ease-out;
+			  transition: right 0.2s ease-out;
+			  &:after {
+			    right: 0;
+			    left: auto;
+			    -webkit-transition: right 0.2s ease-out;
+			    transition: right 0.2s ease-out;
+			  }
+			  &:hover, &:active, &:focus {
+			    right: 20px;
+			    left: auto;
+			    &:after {
+			      right: -20px;
+			      left: auto;
+			    }
+			  }
 			}
 		}
 	}

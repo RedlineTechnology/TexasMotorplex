@@ -35,6 +35,7 @@ header {
     opacity: 0;
     -webkit-transition: opacity 0.2s ease-out;
     transition: opacity 0.2s ease-out;
+    background: rgba(255, 255, 255, 0.9);
     &.open {
       opacity: 1;
       left: 0;
@@ -160,6 +161,7 @@ nav ul {
   }
 
   &-left {
+    padding: .75em 1em .5em;
     @include headlinefont;
     a {
       @include link_color( rgba(0,0,0,0.5), rgba(0,0,0,1));
@@ -168,6 +170,8 @@ nav ul {
     flex: 0 1 auto;
   }
   &-logo {
+    min-width: 100px;
+    display: block;
     @include bgimage( $image:'motorplex_white.png', $pos:left center, $size:contain );
   }
   &-right {
@@ -179,9 +183,6 @@ nav ul {
   }
 
   @include breakpoint('desktop') {
-    &-left {
-      padding: .75em 1em .5em;
-    }
     &-logo {
       min-width: 200px;
       margin: 8px;
@@ -250,6 +251,7 @@ nav ul {
       top: 1.5em;
       left: -.5em;
       padding: .25em 1em 1em 1em;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
       &:hover, &:focus, &:active {
         display: flex;
       }
@@ -287,6 +289,7 @@ nav ul {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     .sub-menu {
       background: white;
+      text-shadow: none;
       box-shadow: 2px 5px 5px rgba(0,0,0,0.4);
     }
     .nav-desktop-left, .nav-desktop-right, #lefttray-toggle {
@@ -353,19 +356,19 @@ li {
   text-align: right;
   text-transform: uppercase;
   letter-spacing: .05em;
+  font-size: .9em;
   padding: .25em 1em;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
 
   p {
     margin-bottom: 0;
   }
 
-  .weather {
-    text-align: left;
-  }
+  .weather,
   .status {
-    text-align: right;
+    text-align: left;
   }
 
   .status span {
@@ -377,6 +380,17 @@ li {
     }
     &.yellow {
       color: yellow;
+    }
+  }
+  @include breakpoint('desktop') {
+    font-size: 1em;
+    flex-direction: row;
+    justify-content: space-between;
+    .weather {
+      text-align: left;
+    }
+    .status {
+      text-align: right;
     }
   }
 }
@@ -407,7 +421,7 @@ footer.site-footer {
   width: 100%;
   bottom: 0;
   padding-top: 100px;
-  padding-bottom: 44px;
+  padding-bottom: 100px;
 
   a {
     @include link_color(rgba(255,255,255,0.7),white);
@@ -415,12 +429,20 @@ footer.site-footer {
   .row {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column-reverse;
     .col-8 {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
   }
+  @include breakpoint('desktop') {
+    padding-bottom: 44px;
+    .row {
+      flex-direction: row;
+    }
+  }
+
   .footer-nav {
     @include bodyfont;
     margin-top: 20px;
@@ -446,7 +468,7 @@ footer.site-footer {
   .site-info {
     font-size: 1em;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 50px;
     .img-wrapper {
       display: block;
       max-width: 200px;
@@ -467,11 +489,21 @@ footer.site-footer {
       margin-bottom: 0;
     }
   }
+  @include breakpoint('desktop') {
+    .site-info {
+      padding-top: 100px;
+    }
+  }
 }
 
 
 /* additional styling to support slide-up footer */
-#page-wrapper { padding-bottom: 560px; }
+#page-wrapper {
+  padding-bottom: 650px;
+  @include breakpoint('desktop') {
+    padding-bottom: 560px;
+  }
+}
 .site-content {
   position: relative;
   z-index: 2;
@@ -480,11 +512,39 @@ footer.site-footer {
 	box-shadow: 0px 10px 10px rgba(0,0,0,0.5);
 }
 
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
-.post-navigation {
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
 	margin: 0 0 1.5em;
 	overflow: hidden;
+  width: 100%;
+  .nav-links {
+    @include superheavyfont;
+    font-size: 1.5em;
+    a {
+      @include link_color($red,$red);
+    }
+    .nav-previous {
+      position: relative;
+      &:before {
+        @include fontawesome(900);
+        content: "\f355";
+        height: 1em;
+        width: 1.5em;
+        left: -1em;
+      }
+    }
+    .nav-next {
+      position: relative;
+      &:after {
+        @include fontawesome(900);
+        content: "\f356";
+        height: 1em;
+        width: 1.5em;
+        right: -1em;
+      }
+    }
+  }
 }
 
 .comment-navigation .nav-previous,

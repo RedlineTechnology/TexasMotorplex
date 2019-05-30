@@ -27,14 +27,6 @@
 		"oF": 0,
 		"oS": 3
 		},
-	"/archive.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/build/archive.php",
-		"oF": 0
-		},
 	"/build": {
 		"ft": 65536,
 		"oA": 1,
@@ -47,6 +39,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/build/comments.php",
+		"oF": 0
+		},
+	"/eventon/archive-ajde_events.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/eventon/archive-ajde_events.php",
 		"oF": 0
 		},
 	"/footer.php": {
@@ -81,14 +81,6 @@
 		"oAP": "/build/header.php",
 		"oF": 0
 		},
-	"/home.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/build/home.php",
-		"oF": 0
-		},
 	"/images/ajax-loader.gif": {
 		"ft": 4194304,
 		"iS": 4178,
@@ -96,6 +88,28 @@
 		"oAP": "/build/images/ajax-loader.gif",
 		"oF": 0,
 		"opt": 0
+		},
+	"/images/diagonal-left.png": {
+		"ft": 32768,
+		"iS": 3907,
+		"oA": 0,
+		"oAP": "/build/images/diagonal-left.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/images/diagonal-right.png": {
+		"ft": 32768,
+		"iS": 3801,
+		"oA": 0,
+		"oAP": "/build/images/diagonal-right.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"/images/ennisyall.jpg": {
 		"ft": 16384,
@@ -136,6 +150,17 @@
 		"jF": 0,
 		"oA": 0,
 		"oAP": "/build/images/mplex_bg.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"/images/mplex_header.jpg": {
+		"ft": 16384,
+		"iS": 167516,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/build/images/mplex_header.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 1,
@@ -214,13 +239,13 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/js/accordion-tabs.min.js": {
+	"/js/accordion-tabs.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/build/js/accordion-tabs.min.min.js",
+		"oAP": "/build/js/accordion-tabs.min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -418,6 +443,30 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/build/page-contact.php",
+		"oF": 0
+		},
+	"/page-home.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/page-home.php",
+		"oF": 0
+		},
+	"/page-news.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/page-news.php",
+		"oF": 0
+		},
+	"/page-sponsors.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/page-sponsors.php",
 		"oF": 0
 		},
 	"/page.php": {
@@ -633,6 +682,30 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/build/template-parts/body-tracking.php",
+		"oF": 0
+		},
+	"/template-parts/content-none.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/content-none.php",
+		"oF": 0
+		},
+	"/template-parts/content-page.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/content-page.php",
+		"oF": 0
+		},
+	"/template-parts/content.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/template-parts/content.php",
 		"oF": 0
 		},
 	"/template-parts/head-tracking.php": {

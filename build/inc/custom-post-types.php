@@ -57,6 +57,7 @@
  		'show_in_nav_menus'     => false,
  		'can_export'            => true,
  		'has_archive'           => false,
+    'rewrite'               => array( 'with_front' => false ),
  		'exclude_from_search'   => true,
  		'publicly_queryable'    => true,
  		'capability_type'       => 'page',
@@ -108,6 +109,7 @@
 		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => false,
+    'rewrite'               => array( 'with_front' => false ),
 		'exclude_from_search'   => true,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
@@ -159,9 +161,10 @@
 		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => false,
+    'rewrite'               => array( 'slug' => 'sponsorlist', 'with_front' => false ),
+		'publicly_queryable'    => false,
 		'exclude_from_search'   => true,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
+		'capability_type'       => 'page'
 	);
 	register_post_type( 'sponsors', $args );
 
